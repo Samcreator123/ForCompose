@@ -9,14 +9,14 @@ const app = express();
 
 const options = 
 {
-    hostname : "localhost",
+    hostname : "worker",
     port: 3333,
     path: '/Click',
     method : 'GET'
 }
 
 // 處理 GET /callBackend 請求
-app.get('/callBackend', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
 
       // 建立發送 HTTP 請求
