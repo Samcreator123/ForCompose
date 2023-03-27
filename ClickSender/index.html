@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Call Backend Example</title>
+    <style>
+      /* 將按鈕置中 */
+      #centered-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 100px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="centered-button" onclick="callBackend()">按了他</button>
+
+    <script>
+      function callBackend() {
+        fetch('http://localhost:3000/callBackend')
+          .then(response => response.text())
+          .then(data => console.log(data))
+          .catch(error => console.error(error));
+      }
+    </script>
+  </body>
+</html>
