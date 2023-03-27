@@ -3,6 +3,7 @@ const express = require('express');
 const http = require('http');
 const { resolve } = require('path');
 const url = require('url');
+const fs = require('fs');
 
 // 建立 Express 應用程式
 const app = express();
@@ -15,8 +16,23 @@ const options =
     method : 'GET'
 }
 
-// 處理 GET /callBackend 請求
-app.get('/', async (req, res) => {
+app.get('/',(req,res)=>{
+  fs.readFile('./index.html',(err,data)=>{
+    if(err)
+    {
+      res.status(404).send('404 Not Found')    
+    }
+    else
+    { 
+      res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+      res.write(data);
+      res.end();
+    }
+  })
+
+})
+
+app.get('/ClickButton', async (req, res) => {
     try {
 
       // 建立發送 HTTP 請求
