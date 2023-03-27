@@ -9,7 +9,7 @@ app = Flask(__name__)
 socketio = SocketIO(app,cors_allowed_origins='*')
 
 def get_data():
-    cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=db;DATABASE=TEST;UID=sa;PWD=Sam008125')
+    cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=127.0.0.1;DATABASE=TEST;UID=sa;PWD=Sam008125')
 
     cursor = cnxn.cursor()
 

@@ -1,8 +1,5 @@
-const { error } = require('console');
 const express = require('express');
 const http = require('http');
-const { resolve } = require('path');
-const url = require('url');
 const fs = require('fs');
 
 // 建立 Express 應用程式
@@ -10,7 +7,7 @@ const app = express();
 
 const options = 
 {
-    hostname : "worker",
+    hostname : "localhost",
     port: 3333,
     path: '/Click',
     method : 'GET'
@@ -52,7 +49,7 @@ app.get('/ClickButton', async (req, res) => {
       });
 
       req.on("error", (error) => {
-        console.error(error);
+        console.log(error);
         res.status(500).send("Internal Server Error");
       });
       
@@ -60,14 +57,14 @@ app.get('/ClickButton', async (req, res) => {
       req.end();
 
     } catch (error) {
-      console.error(error);
+      console.log(error);
       res.status(500).send("Internal Server Error");
     }
   });
   
 
 app.on('error',(error)=>{
-  console.error(error);
+  console.log(error);
 })
 
 // 啟動伺服器
