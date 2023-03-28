@@ -7,7 +7,7 @@ const app = express();
 
 const options = 
 {
-    hostname : "localhost",
+    hostname : "worker",
     port: 3333,
     path: '/Click',
     method : 'GET'
