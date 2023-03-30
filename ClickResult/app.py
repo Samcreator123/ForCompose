@@ -1,6 +1,6 @@
 from flask import Flask,jsonify
 from flask_socketio import SocketIO,emit
-import pyodbc
+import requests
 import threading
 import time
 import json
@@ -9,29 +9,12 @@ app = Flask(__name__)
 socketio = SocketIO(app,cors_allowed_origins='*')
 
 def get_data():
-    cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=@db;DATABASE=TEST;UID=sa;PWD=Sam008125')
-
-    cursor = cnxn.cursor()
-
-    cursor.execute('SELECT TOP 1 Number FROM Click_Counter;')
-
-    rows = cursor.fetchall()
-
-    data = []
-
-    for row in rows:
-        for num in row:   
-            data.append(num)
-
-    cursor.close()
-    cnxn.close()
-
-    return data
+    return requests.get('http://worker:3333/Worker/Get').text
 
 def send_data():
     while True:
         data = get_data()
-        socketio.emit('data',json.dumps({'num':int(data[0])}))
+        socketio.emit('data',json.dumps({'num':int(data)}))
         time.sleep(1)
     
 

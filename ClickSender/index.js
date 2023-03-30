@@ -9,7 +9,7 @@ const options =
 {
     hostname : "worker",
     port: 3333,
-    path: '/Click',
+    path: '/Worker/Click',
     method : 'GET'
 }
 
