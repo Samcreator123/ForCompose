@@ -1,6 +1,6 @@
 # 確定已執行 docker-compose 後再執行
 
-docker exec -it /opt/mssql-tools/bin/sqlcmd 
+docker exec -it db /opt/mssql-tools/bin/sqlcmd 
 \
  -S localhost -U SA -P "Password123"
 \
