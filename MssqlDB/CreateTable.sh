@@ -1,8 +1,5 @@
-# 確定已執行 docker-compose 後再執行
+#!/bin/bash
 
-docker exec -it db /opt/mssql-tools/bin/sqlcmd 
-\
- -S localhost -U SA -P "Password123"
-\
- -Q "CREATE DATABASE TEST; \ USE TEST; \ CREATE TABLE Click_Counter(CounterKey VARCHAR(3) NULL, Number DECIMAL(6,0) NULL);"
+docker exec -it db /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Password123" -i /app/script/createDatabase.sql
 
+docker exec -it db /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Password123" -i /app/script/createTable.sql

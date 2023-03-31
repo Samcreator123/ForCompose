@@ -1,0 +1,2 @@
+USE TEST;
+CREATE TABLE Click_Counter(CounterKey VARCHAR(3) NULL,Number DECIMAL(6,0) NULL);

@@ -11,7 +11,7 @@ namespace ClickWorker.Controllers
         [Route("[action]")]
         public void Click()
         {
-            using var connection = new SqlConnection("server=127.0.0.1;database=TEST;uid=sa;pwd=Sam008125;Connection Timeout=3000");
+            using var connection = new SqlConnection("server=db;database=TEST;uid=sa;pwd=Sam008125;Connection Timeout=3000");
 
             connection.Open();
 
@@ -71,7 +71,7 @@ namespace ClickWorker.Controllers
         [Route("[action]")]
         public int Get()
         {
-            using var connection = new SqlConnection("server=127.0.0.1;database=TEST;uid=sa;pwd=Sam008125;Connection Timeout=3000");
+            using var connection = new SqlConnection("server=db;database=TEST;uid=sa;pwd=Sam008125;Connection Timeout=3000");
 
             connection.Open();
 

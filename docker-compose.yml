@@ -25,7 +25,11 @@ services:
    - 1433:1433
   networks:
    - my-network
- 
+  volume:
+   - ./MssqlDB:/app/script
+   - mssqlbackup:/var/opt/mssql
+  command: sh /app/script/CreateTable.sh
+   
  result:
   build: ./ClickResult
   ports:
