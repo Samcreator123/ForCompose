@@ -18,11 +18,18 @@ services:
    - backend
 
  db:
-  build: ./MssqlDB
+  image: mcr.microsoft.com/mssql/server:2022-latest
+  environment: 
+   - SA_PASSWORD=Password123
+   - ACCEPT_EULA=Y
+  ports:
+   - 1433:1433
   networks:
    - backend
   volumes:
+   - ./MssqlDB:/app/script
    - mssqlbackup:/var/opt/mssql
+  command: sh /app/script/CreateTable.sh
    
  result:
   build: ./ClickResult
