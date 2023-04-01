@@ -1,4 +1,4 @@
-varsion: 3
+version: "3"
 
 services:
 
@@ -7,14 +7,15 @@ services:
   ports:
    - 3000:3000
   networks:
-   - my-network
+   - frontend
 
  worker:
-  build: ./ClickWorker
+  build: ./ClickWorker/ClickWorker
   ports:
    - 3333:3333
   networks:
-   - my-network
+   - frontend
+   - backend
 
  db:
   image: mcr.microsoft.com/mssql/server:2022-latest
@@ -24,8 +25,8 @@ services:
   ports:
    - 1433:1433
   networks:
-   - my-network
-  volume:
+   - backend
+  volumes:
    - ./MssqlDB:/app/script
    - mssqlbackup:/var/opt/mssql
   command: sh /app/script/CreateTable.sh
@@ -35,7 +36,11 @@ services:
   ports:
    - 5000:5000
   networks:
-   - my-network
+   - frontend
+
+volumes:
+ mssqlbackup:
 
 networks:
- my-network
+ frontend:
+ backend:
