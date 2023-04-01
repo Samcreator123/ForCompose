@@ -11,6 +11,8 @@ services:
 
  worker:
   build: ./ClickWorker/ClickWorker
+  environment: 
+   - ASPNETCORE_URLS=http://+:3333
   ports:
    - 3333:3333
   networks:

@@ -10,4 +10,4 @@ COPY . /app/script
 
 EXPOSE 1433
 
-RUN /app/script/CreateTable.sh
+CMD /bin/bash /app/script/entrypoint.sh
