@@ -6,13 +6,7 @@ echo now get into entrypoint!!
 
 
 
-/opt/mssql/bin/sqlservr
-
-wait
-
-echo sqlserver init completed!! now start init data!!
+/opt/mssql/bin/sqlservr | /opt/mssql/bin/permissions_check.sh | /app/script/db-init.sh
 
 
-
-/app/script/db-init.sh
 
