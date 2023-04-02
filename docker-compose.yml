@@ -22,7 +22,6 @@ services:
    - backend
   depends_on:
    - "db"
-  command: ["./ClickWorker/wait-for-it.sh","db"]
 
  db:
   build: ./MssqlDB

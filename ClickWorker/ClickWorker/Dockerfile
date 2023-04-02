@@ -14,4 +14,4 @@ WORKDIR /app
 
 COPY --from=build /app ./
 
-ENTRYPOINT ["dotnet", "ClickWorker.dll"]
+ENTRYPOINT ["./wait-for-it.sh","db","--","dotnet", "ClickWorker.dll"]
