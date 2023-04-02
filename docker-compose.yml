@@ -25,18 +25,13 @@ services:
   command: ["./ClickWorker/wait-for-it.sh","db"]
 
  db:
-  image: mcr.microsoft.com/mssql/server:2022-latest
-  environment: 
-   - SA_PASSWORD=Password123
-   - ACCEPT_EULA=Y
+  build: ./MssqlDB
   networks:
    - backend
   ports:
    - 1433:1433
   volumes:
    - mssqlbackup:/var/opt/mssql
-   - ./MssqlDB:/app/script
-  command: sh /app/script/entrypoint.sh
    
  result:
   build: ./ClickResult
