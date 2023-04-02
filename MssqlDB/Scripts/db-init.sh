@@ -14,13 +14,13 @@ do
 
     then
 
-        echo "setup.sql completed"
+        echo "db-init.sql completed"
 
         break
 
     else
 
-        echo "not ready yet..."
+        echo "db-init.sql not ready yet..."
 
         sleep 1
 
