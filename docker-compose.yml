@@ -8,6 +8,8 @@ services:
    - 3000:3000
   networks:
    - frontend
+  depends_on:
+   - "worker"
 
  worker:
   build: ./ClickWorker/ClickWorker
@@ -18,20 +20,15 @@ services:
   networks:
    - frontend
    - backend
+  depends_on:
+   - "db"
 
  db:
   build: ./MssqlDB
-  environment: 
-   - SA_PASSWORD=Password123
-   - ACCEPT_EULA=Y
   networks:
    - backend
-  ports:
-   - 1433:1433
   volumes:
    - mssqlbackup:/var/opt/mssql
-   - ./MssqlDB:/app/script
-  command: sh /app/script/entrypoint.sh
    
  result:
   build: ./ClickResult
@@ -39,6 +36,8 @@ services:
    - 5000:5000
   networks:
    - frontend
+  depends_on:
+   - "worker"
 
 volumes:
  mssqlbackup:
