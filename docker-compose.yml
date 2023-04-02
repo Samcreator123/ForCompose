@@ -25,7 +25,7 @@ services:
   command: ["./ClickWorker/wait-for-it.sh","db"]
 
  db:
-  build: ./MssqlDB
+  image: mcr.microsoft.com/mssql/server:2022-latest
   environment: 
    - SA_PASSWORD=Password123
    - ACCEPT_EULA=Y
